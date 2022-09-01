@@ -11,7 +11,7 @@ def show_detected_words(data, img):
     in all the detected words and returns de image'''
     n = len(data["text"])  # number of words detected
     for i in range(n):
-        if int(data["conf"][i]) > 80:
+        if int(data["conf"][i]) > 60:
             (x, y, w, h) = (data["left"][i], data["top"]  # coordinates of each detected word
                             [i], data["width"][i], data["height"][i])
             # draw the rectangles in the image
@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
     img = cv2.imread("Book 3.jpg")  # image in the same directory
     img_data = pytesseract.image_to_data(
-        img, config=r"--oem 1 --psm 12",  output_type=Output.DICT)  # engine modes and page segmetation (still researching)
+        img, config=r"--oem 2 --psm 6",  output_type=Output.DICT)  # engine modes and page segmetation (still researching)
     recognized_text(img_data)
     img = show_detected_words(img_data, img)
     cv2.imshow("Recognized words in the image", img)  # show image
