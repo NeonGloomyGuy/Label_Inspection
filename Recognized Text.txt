@@ -1,8 +1,8 @@
-——$—$$____
 FLOATING-POINT
 OVERFLOW
 AND
 UNDERFLOW
+|
 What
 happens
 if
@@ -17,6 +17,7 @@ exceed
 its
 limits?
 For
+\
 example,
 suppose
 you
@@ -29,6 +30,7 @@ or
 divide
 10e—37
 by
+\
 1000
 (underflow)?
 The
@@ -41,6 +43,7 @@ On
 our
 system,
 any
+|
 number
 that
 overflows
@@ -54,6 +57,7 @@ value,
 and
 any
 number
+|
 that
 underflows
 is
@@ -82,7 +86,8 @@ matter
 that
 concerns
 you,
-you'll
+you’ll
+\
 have
 to
 check
@@ -108,12 +113,18 @@ little
 trial
 and
 error.
-pein
-a
-=
-—_
+R
+R
+SR
+SN
+e
+o
+e
+e
+e
 SUMMARY:
 THE
 BASIC
 DATA
 TYPES
+:
