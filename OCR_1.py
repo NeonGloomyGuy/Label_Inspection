@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
     img = cv2.imread("Book 3.jpg")  # image in the same directory
     img_data = pytesseract.image_to_data(
-        img, config=r"--oem 3 --psm 6",  output_type=Output.DICT)  # engine modes and page segmetation (still researching)
+        img, config=r"--oem 2 --psm 6",  output_type=Output.DICT)  # engine modes and page segmetation (still researching)
     recognized_text(img_data)
     img = show_detected_words(img_data, img)
     cv2.imshow("Recognized words in the image", img)  # show image
