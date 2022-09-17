@@ -1,17 +1,22 @@
 import cv2
 import pytesseract
+import os
 from pytesseract import Output
 
 # path to the ocr engine
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
+def get_image_path(filename):
+    script_dir = os.path.dirname(os.path.realpath('__file__'))
+    image_path = os.path.join(script_dir,'resources', filename)
+    return image_path
 
 def show_detected_words(data, img):
     '''Receives the data dictionary of the image and the image, puts rectangles
     in all the detected words and returns de image'''
     n = len(data["text"])  # number of words detected
     for i in range(n):
-        if int(data["conf"][i]) > 60:
+        if float(data["conf"][i]) > 60:
             (x, y, w, h) = (data["left"][i], data["top"]  # coordinates of each detected word
                             [i], data["width"][i], data["height"][i])
             # draw the rectangles in the image
@@ -23,7 +28,7 @@ def show_detected_words(data, img):
 
 def recognized_text(data):
     '''Stores and filters recognized words in a .txt file'''
-    with open("Recognized Text.txt", "w+") as file:
+    with open("Recognized Text.txt", "w+", encoding = "utf8") as file:
         for text in data["text"]:
             if text != "":
                 file.write(text + "\n")
@@ -31,9 +36,14 @@ def recognized_text(data):
 
 if __name__ == "__main__":
 
-    img = cv2.imread("Book 3.jpg")  # image in the same directory
+    img = cv2.imread(get_image_path("ET 5.jpg"))  # image in the same directory
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     img_data = pytesseract.image_to_data(
+<<<<<<< HEAD
         img, config=r"--oem 2 --psm 6",  output_type=Output.DICT)  # engine modes and page segmetation (still researching)
+=======
+        img, config=r"--oem 1 --psm 12",  output_type=Output.DICT)  # engine modes and page segmetation (still researching)
+>>>>>>> 0579142ba2904c0f99d6c7575526213354fd49b9
     recognized_text(img_data)
     img = show_detected_words(img_data, img)
     cv2.imshow("Recognized words in the image", img)  # show image

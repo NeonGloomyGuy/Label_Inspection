@@ -4,7 +4,7 @@ from imutils.object_detection import non_max_suppression
 
 
 def template_matching(img, tmp):
-    ''' Template matching function'''
+    ''' Template matching function, pass the image and the template'''
 
     (tH, tW) = tmp.shape[:2]  # unpack the dimensions of our template
     treshold = 0.8
